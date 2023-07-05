@@ -27,22 +27,7 @@ jobs:
         uses: datarobot-oss/custom-models-action@v1.4.2
         with:
           api-token: ${{ secrets.DATAROBOT_API_TOKEN }}
-          webserver: ${{ secrets.DATAROBOT_WEBSERVER }}
+          webserver: https://app.datarobot.com/
           branch: master
           allow-model-deletion: true
           allow-deployment-deletion: true
-
-      - name: DataRobot Custom Models Action Metrics
-        run: |
-          echo "Total affected models: ${{ steps.datarobot-custom-models-step.outputs.models--total-affected }}"
-          echo "Total created models: ${{ steps.datarobot-custom-models-step.outputs.models--total-created }}"
-          echo "Total deleted models: ${{ steps.datarobot-custom-models-step.outputs.models--total-deleted }}"
-          echo "Total models whose settings were updated: ${{ steps.datarobot-custom-models-step.outputs.models--total-updated-settings }}"
-          echo "Total created model versions: ${{ steps.datarobot-custom-models-step.outputs.models--total-created-versions }}"
-
-          echo "Total affected deployments: ${{ steps.datarobot-custom-models-step.outputs.deployments--total-affected }}"
-          echo "Total created deployments: ${{ steps.datarobot-custom-models-step.outputs.deployments--total-created }}"
-          echo "Total deleted deployments: ${{ steps.datarobot-custom-models-step.outputs.deployments--total-deleted }}"
-          echo "Total deployments whose settings were updated: ${{ steps.datarobot-custom-models-step.outputs.deployments--total-updated-settings }}"
-
-          echo "Message: ${{ steps.datarobot-custom-models-step.outputs.message }}"
